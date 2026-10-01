@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seoulinny — Production</title>
+  <meta name="description" content="Seoulinny connects companies and artists with local production teams across New York, Los Angeles, San Francisco, and Seoul. Production, crew, events.">
+  <meta property="og:title" content="Seoulinny — Production">
+  <meta property="og:description" content="Production, crew, and events. Based in New York, working across Los Angeles, San Francisco, and Seoul.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://seoulinny.com/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23141312'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='40' fill='%23f4f1ec'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=Noto+Serif+KR:wght@300;400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --bg-deep: #ece8e1;
+      --ink: #141312;
+      --ink-soft: #4a4744;
+      --ink-mute: #8a857e;
+      --rule: rgba(20, 19, 18, 0.14);
+      --accent: #8b6f47;
+      --serif: "Cormorant Garamond", "Noto Serif KR", Georgia, serif;
+      --sans: "Inter", "Noto Sans KR", -apple-system, system-ui, sans-serif;
+      --max: 1180px;
+      --gutter: clamp(20px, 5vw, 72px);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    html[lang="ko"] body { font-size: 16px; line-height: 1.85; word-break: keep-all; }
+    html[lang="ko"] { --serif: "Noto Serif KR", "Cormorant Garamond", Georgia, serif; --sans: "Noto Sans KR", "Inter", -apple-system, system-ui, sans-serif; }
+
+    /* language switching */
+    [data-lang] { display: none; }
+    html[lang="en"] [data-lang="en"], html[lang="ko"] [data-lang="ko"] { display: revert; }
+
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--ink); color: var(--bg); }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* header */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .brand {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 500; font-size: 24px; letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .links { display: flex; gap: 32px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400; }
+    .links a { color: var(--ink-soft); transition: color .2s; }
+    .links a:hover { color: var(--ink); }
+    .lang { display: flex; gap: 0; font-size: 12px; letter-spacing: 0.12em; font-weight: 400; }
+    .lang button {
+      appearance: none; background: none; border: 0; padding: 6px 8px; cursor: pointer;
+      font: inherit; color: var(--ink-mute); letter-spacing: inherit; transition: color .2s;
+    }
+    .lang button[aria-pressed="true"] { color: var(--ink); }
+    .lang button:hover { color: var(--ink); }
+    .lang span { color: var(--rule); align-self: center; }
+
+    /* hero */
+    .hero { padding: clamp(96px, 18vh, 200px) 0 clamp(72px, 12vh, 140px); }
+    .hero .kicker {
+      font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); font-weight: 500;
+      margin: 0 0 32px;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 300; margin: 0;
+      font-size: clamp(40px, 6.4vw, 84px); line-height: 1.08; letter-spacing: -0.01em; max-width: 14ch;
+    }
+    html[lang="ko"] .hero h1 { font-size: clamp(32px, 5.2vw, 66px); line-height: 1.28; max-width: 20ch; letter-spacing: 0; }
+    .hero h1 em { font-style: italic; color: var(--ink-soft); }
+    .hero p { max-width: 46ch; margin: 40px 0 0; color: var(--ink-soft); font-size: 18px; }
+    .hero .cities {
+      margin-top: 72px; display: flex; flex-wrap: wrap; gap: 12px 40px;
+      font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute); font-weight: 400;
+    }
+
+    /* sections */
+    .section { border-top: 1px solid var(--rule); padding: clamp(72px, 10vh, 128px) 0; }
+    .grid { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: start; }
+    .num { font-family: "Cormorant Garamond", Georgia, serif; font-size: 14px; letter-spacing: 0.2em; color: var(--accent); margin: 0 0 20px; font-weight: 500; }
+    .section h2 {
+      font-family: var(--serif); font-weight: 300; margin: 0;
+      font-size: clamp(32px, 3.6vw, 48px); line-height: 1.15; letter-spacing: -0.005em;
+      position: sticky; top: 108px;
+    }
+    html[lang="ko"] .section h2 { font-size: clamp(28px, 3vw, 40px); line-height: 1.3; letter-spacing: 0; }
+    .copy p { margin: 0; color: var(--ink-soft); font-size: 18px; max-width: 58ch; }
+    .copy p + p { margin-top: 22px; }
+    .copy p:first-child { color: var(--ink); font-size: 20px; }
+    html[lang="ko"] .copy p { font-size: 16.5px; }
+    html[lang="ko"] .copy p:first-child { font-size: 18px; }
+    .cta { display: inline-block; margin-top: 40px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; padding-bottom: 6px; border-bottom: 1px solid var(--ink); transition: color .2s, border-color .2s; }
+    .cta:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* about band */
+    .about { background: var(--ink); color: var(--bg); }
+    .about { --rule: rgba(244, 241, 236, 0.18); --ink-soft: #c9c3ba; --ink-mute: #8f8a83; }
+    .about .copy p:first-child { color: var(--bg); }
+    .about .num { color: #c2a67a; }
+    .about ::selection { background: var(--bg); color: var(--ink); }
+
+    /* footer */
+    footer { padding: 72px 0 48px; }
+    .foot { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; font-size: 13px; color: var(--ink-soft); }
+    .foot .label { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute); margin: 0 0 12px; font-weight: 500; }
+    .foot p { margin: 0; line-height: 1.8; }
+    .foot a:hover { color: var(--accent); }
+    .foot .brand { font-size: 20px; }
+    .legal { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+    @media (max-width: 820px) {
+      .links { display: none; }
+      .grid { grid-template-columns: 1fr; gap: 28px; }
+      .section h2 { position: static; }
+      .foot { grid-template-columns: 1fr; gap: 36px; }
+      .legal { flex-direction: column; gap: 8px; }
+      .hero .cities { gap: 10px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">Seoulinny</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#production"><span data-lang="en">Production</span><span data-lang="ko">프로덕션</span></a>
+      <a href="#professionals"><span data-lang="en">Professionals</span><span data-lang="ko">필름 프로페셔널</span></a>
+      <a href="#events"><span data-lang="en">Events</span><span data-lang="ko">이벤트</span></a>
+      <a href="#about"><span data-lang="en">About</span><span data-lang="ko">소개</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" data-set-lang="ko" aria-pressed="false">KO</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker"><span data-lang="en">Production · Crew · Events</span><span data-lang="ko">프로덕션 · 크루 · 이벤트</span></p>
+      <h1>
+        <span data-lang="en">Local production, <em>wherever</em> the story takes you.</span>
+        <span data-lang="ko">이야기가 향하는 곳, <em>어디서든</em> 현지 프로덕션과 함께합니다.</span>
+      </h1>
+      <p>
+        <span data-lang="en">Based in New York with a global network, we connect companies and artists with the right people on the ground and see every project through to delivery.</span>
+        <span data-lang="ko">뉴욕을 기반으로 전 세계 네트워크를 갖춘 저희는 기업과 아티스트를 현지의 적합한 팀과 연결하고, 프로젝트가 완성될 때까지 함께합니다.</span>
+      </p>
+      <div class="cities">
+        <span>New York</span><span>Los Angeles</span><span>San Francisco</span><span>Seoul</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="production">
+    <div class="wrap grid reveal">
+      <div>
+        <p class="num">01</p>
+        <h2><span data-lang="en">Production</span><span data-lang="ko">프로덕션</span></h2>
+      </div>
+      <div class="copy">
+        <div data-lang="en">
+          <p>We connect companies and artists with local production teams, managing every project to deliver the most effective results within your budget.</p>
+          <p>When local production resources do not fully meet a client's needs, we assemble a dedicated crew tailored to the project.</p>
+          <p>We support every stage of the production process, from content planning and concept development for video and promotional materials to final delivery.</p>
+          <p>We also provide strategic marketing direction and detailed plans tailored to each client's goals.</p>
+        </div>
+        <div data-lang="ko">
+          <p>저희는 기업 및 아티스트와 현지 프로덕션을 연결해 드립니다. 주어진 예산 안에서 가장 효과적인 결과를 낼 수 있도록 프로젝트를 진행합니다.</p>
+          <p>클라이언트의 니즈에 맞는 현지 프로덕션이 없을 경우, 필요한 크루를 직접 선발해 맞춤형 팀을 구성해 드립니다.</p>
+          <p>영상 및 홍보물의 콘텐츠 기획과 콘셉트 설정 등 영상 제작에 필요한 모든 과정을 지원합니다.</p>
+          <p>마케팅 측면에서도 클라이언트의 니즈에 맞는 방향성과 구체적인 실행 계획을 제안해 드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="professionals">
+    <div class="wrap grid reveal">
+      <div>
+        <p class="num">02</p>
+        <h2><span data-lang="en">For Film Professionals</span><span data-lang="ko">필름 프로페셔널을 위해</span></h2>
+      </div>
+      <div class="copy">
+        <div data-lang="en">
+          <p>If you are a cinematographer, photographer, or a sound or lighting professional, we would love to hear from you.</p>
+          <p>We connect talented professionals with both commercial and independent projects. We also handle payment negotiations on your behalf to ensure your rights are protected.</p>
+          <a class="cta" href="mailto:hello@seoulinny.com">Get in touch</a>
+        </div>
+        <div data-lang="ko">
+          <p>촬영감독, 사진작가, 음향 및 조명 분야의 전문가라면 언제든지 연락해 주세요.</p>
+          <p>상업 및 독립 프로젝트에 연결해 드리며, 보수 관련 협의를 대신 진행하여 여러분의 권리를 보장해 드립니다.</p>
+          <a class="cta" href="mailto:hello@seoulinny.com">연락하기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="events">
+    <div class="wrap grid reveal">
+      <div>
+        <p class="num">03</p>
+        <h2><span data-lang="en">Event Planning &amp; Management</span><span data-lang="ko">이벤트 기획 및 운영</span></h2>
+      </div>
+      <div class="copy">
+        <div data-lang="en">
+          <p>We help companies and individuals host successful events, supporting you from initial planning through on-site management.</p>
+          <p>Through close communication with each client, we make sure your vision and the message you want to share come through clearly in every detail of the event.</p>
+          <p>We are dedicated to helping you share your most meaningful moments with the people who matter.</p>
+        </div>
+        <div data-lang="ko">
+          <p>기업 및 개인 이벤트를 효과적으로 개최할 수 있도록 기획부터 운영까지 함께합니다.</p>
+          <p>클라이언트와의 충분한 소통을 바탕으로, 원하시는 콘셉트와 전하고자 하는 메시지가 이벤트를 통해 온전히 표현될 수 있도록 합니다.</p>
+          <p>소중한 순간을 사람들과 의미 있게 나눌 수 있도록 최선을 다하겠습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <div class="wrap grid reveal">
+      <div>
+        <p class="num">04</p>
+        <h2><span data-lang="en">Who We Are</span><span data-lang="ko">소개</span></h2>
+      </div>
+      <div class="copy">
+        <div data-lang="en">
+          <p>Based in New York, we are a team with a global network.</p>
+          <p>Our film and AI video professionals work together across New York, Los Angeles, San Francisco, and Seoul.</p>
+          <p>Drawing on our experience in both commercial and independent film, as well as collaborations on a wide range of advertising projects, we provide services tailored to each client's needs.</p>
+        </div>
+        <div data-lang="ko">
+          <p>저희는 뉴욕을 기반으로 전 세계에 네트워크를 갖춘 팀입니다.</p>
+          <p>뉴욕, LA, 샌프란시스코, 서울에서 활동하는 영화 및 AI 영상 전문가들이 함께 작업합니다.</p>
+          <p>상업 영화와 독립 영화 제작 경험, 그리고 다양한 광고 프로젝트 협업을 바탕으로 클라이언트에게 가장 적합한 서비스를 제공합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <p class="brand">Seoulinny</p>
+        <p><span data-lang="en">Production · Crew · Events</span><span data-lang="ko">프로덕션 · 크루 · 이벤트</span></p>
+      </div>
+      <div>
+        <p class="label"><span data-lang="en">Locations</span><span data-lang="ko">활동 지역</span></p>
+        <p>New York<br>Los Angeles<br>San Francisco<br>Seoul</p>
+      </div>
+      <div>
+        <p class="label"><span data-lang="en">Contact</span><span data-lang="ko">문의</span></p>
+        <p><a href="mailto:hello@seoulinny.com">hello@seoulinny.com</a></p>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span id="year"></span> Seoulinny</span>
+      <span>New York — Seoul</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll('[data-set-lang]');
+    function setLang(lang, persist) {
+      root.setAttribute('lang', lang);
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setLang === lang)); });
+      document.title = lang === 'ko' ? 'Seoulinny — 프로덕션' : 'Seoulinny — Production';
+      if (persist) { try { localStorage.setItem('lang', lang); } catch (e) {} }
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    var initial = saved || ((navigator.language || '').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en');
+    setLang(initial, false);
+    buttons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.setLang, true); }); });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      items.forEach(function (el) { io.observe(el); });
+    } else {
+      items.forEach(function (el) { el.classList.add('in'); });
+    }
+  })();
+</script>
+</body>
+</html>
